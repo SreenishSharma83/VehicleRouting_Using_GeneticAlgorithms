@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "vrp-solver"
+version = "1.0.0"
+description = "Capacitated Vehicle Routing Problem with Time Windows (CVRPTW) solver written in Python."
+authors = ["Sreenish"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+ortools = "~9.5"
+pyyaml = "~6.0"
+graphviz = "~0.20"
+
+[tool.poetry.dev-dependencies]
+black = "~22.10"
+flake8 = "~6.0"
+isort = "~5.10"
+pyright = "~1.1"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+# isort configuration compatible with Black
+# Ref. https://pycqa.github.io/isort/docs/configuration/black_compatibility.html
+# Ref. https://black.readthedocs.io/en/stable/guides/using_black_with_other_tools.html#isort
+[tool.isort]
+profile = "black"
+
+# Pyright configuration
+# Ref. https://github.com/microsoft/pyright/blob/main/docs/configuration.md
+[tool.pyright]
+include = ["*"]
+typeCheckingMode = "strict"
+useLibraryCodeForTypes = true
+# Disable some diagnostic settings because strict type checking for external libraries
+# is too hard
+reportMissingTypeStubs = "none"
+reportUnknownMemberType = "none"
